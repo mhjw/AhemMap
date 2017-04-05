@@ -1,15 +1,20 @@
 <html>
 <head>
 	<title>Nearby Pokémon</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="PokeMap026">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#3b3b3b">
 	<script>var pageLoaded = new Date().getTime();</script>
 	<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/mobile.min.css').lstrip('/') }}" type="text/css" />
 </head>
 <body>
-	<h1>Nearby Pokémon</h1>
+	<h1>Pokémon vlakbij</h1>
 
 	<ol>
-{% for pokemon in pokemon_list[:20] %}
+{% for pokemon in pokemon_list[:30] %}
 {% set img = 'icons/' ~ pokemon.id ~ '.png' -%}
 		<li style="background-image: url('{{ url_for('static', filename=img).lstrip('/') }}')"
 			href='geo:0,0?q={{pokemon.latitude}},{{pokemon.longitude}}({{pokemon.name}})'>
@@ -23,7 +28,7 @@
 	<div id="nav">
 		<button>Refresh</button>
 		<div>
-			<label><input type="checkbox" id="use-loc">Use device location</label>
+			<label><input type="checkbox" id="use-loc">Gebruik mijn locatie</label>
 		</div>
 	</div>
 
